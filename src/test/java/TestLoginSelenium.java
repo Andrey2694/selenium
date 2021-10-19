@@ -37,7 +37,7 @@ public class TestLoginSelenium {
         WebElement money = driver.findElement(By.id("form-field-field_504ba40"));
         WebElement timeForCreate = driver.findElement(By.id("form-field-field_b8a2f4b"));
         WebElement login = driver.findElement(By.className("elementor-button"));
-        WebElement l = driver.findElement(By.xpath(""));
+
 
         username.sendKeys("1111");
         mobile.sendKeys("11111");

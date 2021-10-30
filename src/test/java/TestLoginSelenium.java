@@ -1,7 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -17,8 +15,8 @@ public class TestLoginSelenium {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().setSize(new Dimension(1400,800));
     }
 
     @AfterMethod
@@ -38,6 +36,8 @@ public class TestLoginSelenium {
         WebElement timeForCreate = driver.findElement(By.id("form-field-field_b8a2f4b"));
         WebElement login = driver.findElement(By.className("elementor-button"));
 
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,300)");
 
         username.sendKeys("1111");
         mobile.sendKeys("11111");
@@ -45,7 +45,6 @@ public class TestLoginSelenium {
         money.sendKeys("1111");
         timeForCreate.sendKeys("11111");
         login.click();
-
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://thehostbest.ru/my-custom-development/");
     }

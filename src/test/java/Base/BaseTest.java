@@ -1,13 +1,26 @@
+package Base;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
+    protected WebDriverWait getWait() {
+        return new WebDriverWait(getDriver(), 10);
+    }
+
+    protected static void scroll(WebDriver driver, WebElement element) {
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].scrollIntoView();", element);
+    }
 
     private static final ChromeOptions CHROME_OPTIONS;
     static {
@@ -33,6 +46,7 @@ public abstract class BaseTest {
     public void setUp() {
         driver = new ChromeDriver(CHROME_OPTIONS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().deleteAllCookies();
     }
 
     @AfterMethod

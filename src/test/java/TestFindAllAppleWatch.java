@@ -1,18 +1,14 @@
+import Base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestFindAllAppleWatch extends BaseTest{
-    public WebDriverWait getWait() {
-        return new WebDriverWait(getDriver(), 10);
-    }
-
+public class TestFindAllAppleWatch extends BaseTest {
     @Test
     public void findWatchesZA() {
         getDriver().get("https://www.x-kom.pl/");

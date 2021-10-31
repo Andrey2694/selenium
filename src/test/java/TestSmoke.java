@@ -1,9 +1,10 @@
+import Base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestSmoke extends BaseTest{
+public class TestSmoke extends BaseTest {
     @Test
     public void testSmoke() {
         getDriver().get("http://automationpractice.com/index.php");
